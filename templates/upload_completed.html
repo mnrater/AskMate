@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Complated</title>
+</head>
+<body>
+{% if object_type == "question" %}
+    <h1>Upload Complated</h1>
+    <a href={{ url_for('list_questions', question_id=object_id) }}><p>Go back</p></a>
+{% endif %}
+{% if object_type == "answer" %}
+    <h1>Upload Complated</h1>
+    <a href={{ url_for("list_question_by_id", answer_id=object_id) }}><p>Go back</p></a>
+{% endif %}
+</form>
+</body>
+</html>

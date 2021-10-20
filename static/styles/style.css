@@ -1,0 +1,445 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+}
+.nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.navbar {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+}
+.collapse {
+    margin-right: 20px;
+}
+.navbar-nav {
+    margin-right: 20px;
+}
+.nav-link {
+    color: #e9f3e9 !important;
+}
+.nav-link:hover {
+    color: darkred !important;
+}
+.center {
+    padding: 2px;
+    box-shadow: 10px 10px 8px 10px #888888;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 40%;
+    border-radius: 20px;
+    background: white;
+}
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}
+.header_h1 {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(#868f96, #596164);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.center a {
+    text-decoration: none;
+    color: #868f96;
+    font-size: 20px;
+}
+.center a:hover {
+    color: black;
+}
+.center a:visited {
+    color: #3c3c3c
+}
+.id_view_submission {
+    text-align: center;
+}
+.question_title {
+    text-align: center;
+}
+.question_title a {
+    font-size: 30px;
+}
+.vote {
+    text-align: center;
+}
+.menu {
+    display: block;
+    margin: auto;
+    padding: 10px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.menu_link {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    margin: 50px;
+}
+.menu_link:hover {
+    color: darkred;
+}
+.footer {
+    padding: 10px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;
+}
+.footer p {
+    color: white;
+    font-size: 16px;
+}
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.7;
+    color: #3c3c3c;
+}
+.fa-facebook {
+    background: red;
+    color: white;
+}
+.fa-twitter {
+    background: red;
+    color: white;
+}
+.fa-instagram {
+    background: red;
+    color: white;
+}
+.fa-google {
+    background: red;
+    color: white;
+}
+.fa-linkedin {
+    background: red;
+    color: white;
+}
+.fa-youtube {
+    background: red;
+    color: white;
+}
+.pop-up {
+    padding: 50px;
+    box-shadow: 10px 10px 8px 10px #888888;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-top: 250px;
+    margin-bottom: 250px;
+    border-radius: 20px;
+    background: white;
+}
+.pop-up h1 {
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    margin-top: 20px;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(#868f96, #596164);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.register_login_form {
+    text-align: center;
+    background-color: white;
+    width: 300px;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 30px 30px 52px 1px rgba(0,0,0,0.7);
+    -moz-box-shadow: 30px 30px 52px 1px rgba(0,0,0,0.7);
+    box-shadow: 30px 30px 52px 1px rgba(0,0,0,0.7);
+}
+.form_register_login_text {
+    padding: 10px;
+    margin:10px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    width:100%;
+    text-align: center;
+}
+
+.form_register_login_password {
+    padding: 10px;
+    margin:10px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    width:100%;
+    text-align: center;
+}
+
+.submit_button {
+    padding: 5px;
+    margin:20px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    width:50%;
+    text-align: center;
+    background: red;
+    color: white;
+}
+.submit_button:hover {
+    cursor: pointer;
+    background: darkred;
+}
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 10rem;
+}
+.pop-up-register-login {
+    padding: 10px;
+    box-shadow: 10px 10px 8px 10px #888888;
+    margin: auto;
+    margin-top: 60px;
+    width: 24%;
+    border-radius: 20px;
+    background: white;
+}
+.pop-up-register-login h1 {
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(#868f96, #596164);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.add_question_form {
+    text-align: center;
+    background-color: white;
+    width: 500px;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 30px 30px 52px 1px rgba(0,0,0,0.7);
+    -moz-box-shadow: 30px 30px 52px 1px rgba(0,0,0,0.7);
+    box-shadow: 30px 30px 52px 1px rgba(0,0,0,0.7);
+}
+.form_add_question_title {
+    padding: 10px;
+    margin:10px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    width:400px;
+    text-align: center;
+}
+.form_add_question_message {
+    text-align: left;
+    margin:10px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    width:400px;
+    height: 200px;
+    padding: 5px;
+}
+.form_add_question_message::placeholder {
+    text-align: center;
+    line-height: 180px;
+}
+.add_question_button {
+    padding: 5px;
+    margin:20px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    width:25%;
+    text-align: center;
+    background: red;
+    color: white;
+}
+.add_question_button:hover {
+    cursor: pointer;
+    background: darkred;
+}
+.question_block {
+    padding: 10px;
+    box-shadow: 10px 10px 8px 10px #888888;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    background: white;
+}
+.single_answer_block {
+    padding: 2px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+    color: white;
+}
+.single_answer_block a {
+    text-decoration: none;
+}
+.answer_comment_info {
+    padding: 18px;
+    display: block;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: white;
+    text-align: center;
+    color: black;
+}
+.answer_comment_info a {
+    text-decoration: none;
+}
+.separator {
+    margin-top: 10px;
+}
+.single_question_comment {
+    padding: 2px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+    text-align: center;
+}
+.single_question_comment a {
+    text-decoration: none;
+}
+.question_comment_info {
+    color: white;
+}
+.question_block {
+    text-align: center;
+}
+.tag_info {
+    padding: 10px;
+    box-shadow: 5px 5px 4px 5px #888888;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+    color: white;
+}
+.tag_info a {
+    text-decoration: none;
+}
+.question_title_header {
+
+}
+.no_content {
+    padding: 10px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 35%;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+    color: white;
+}
+.form_edit_question_message {
+    text-align: center;
+    margin:10px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    width:400px;
+    height: 200px;
+    padding: 5px;
+}
+
+.welcome_message {
+    color: darkred;
+    margin-right: 6px;
+    margin-top: 8px;
+}
+
+.add_new_content_container {
+    text-align: center;
+    background: darkred;
+    padding: 10px;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+.add_new_content {
+    color: white;
+    text-decoration: none;
+}
+
+.add_new_content:hover {
+    color: white;
+}
+
+.main_header {
+    margin-top: 50px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 40%;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.main_header h1 {
+    color: white;
+}
+
+.window_container {
+    text-align: center;
+    padding: 140px;
+}
+

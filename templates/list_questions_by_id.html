@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AskMate</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div id="page-container">
+    <div id="content-wrap">
+        <section id="nav-bar">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="/">
+                    <img style="margin-left: 20px" src="/static/askmate_logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        {% if session['user_email'] %}
+                            <li>
+                                <div class="welcome_message"> Welcome {{ session['user_email'] }}!</div>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a class="nav-link" href="{{ url_for('list_questions') }}">List of questions</a>
+                        </li>
+                        {% if session['user_email'] %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/sign-out">Sign out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/registration">Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" action="{{ url_for('base') }}" method="post">
+                        <div class="input-group">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                                   name="search_phrase">
+                            <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </section>
+
+        {% if session['user_email'] %}
+            <div class="menu">
+                <div class="menu_space">
+                    {% for question in questions %}
+                        {% if question[id_question_index] == question_id %}
+                            <a class="menu_link"
+                               href={{ url_for('tag_a_question', question_id=question[id_question_index]) }}>Tag a
+                                question</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% for question in questions %}
+                        {% if question[id_question_index] == question_id %}
+                            <a class="menu_link"
+                               href={{ url_for('post_answer', question_id=question[id_question_index]) }}>Post a new
+                                answer</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% for question in questions %}
+                        {% if question[id_question_index] == question_id %}
+                            <a class="menu_link"
+                               href={{ url_for('display_comment_page', question_id=question[id_question_index]) }}>Comment
+                                a question</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+
+        <div class="question_block">
+            {% for question in questions %}
+                {% if question[id_question_index] == question_id %}
+                    <h1 class="question_title_header">{{ question[title_question_index]|safe }}</h1>
+                    {% if session['user_email'] %}
+                        {% for question in questions %}
+                            {% if question[id_question_index] == question_id %}
+                                <a title="Edit question"
+                                   href={{ url_for('edit_a_question', question_id=question[id_question_index]) }}>&#x270D</a>
+                                <a title="Delete question"
+                                   onclick="return confirm('Do you want to delete that question')"
+                                   href="{{ url_for('remove_question', question_id=question[id_question_index]) }}">&#x274C</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <hr>
+                    {{ question[message_question_index]|safe }}
+                    <hr>
+                {% endif %}
+            {% endfor %}
+
+            <h1>Answers</h1>
+            {#            <hr>#}
+            {% if is_flag == False %}
+                <div class="no_content">
+                    <b>There are no answers yet &#128064</b>
+                </div>
+            {% else %}
+                <div class="answers_block">
+                    {% for answer in answers %}
+                        {% if answer[id_question_in_answer_index] == question_id %}
+                            <div class="single_answer_block">
+                                <p>
+                                <div class="question_title">
+                                    <h4><b>{{ answer[4]|safe }}</b></h4>
+                                    <hr>
+                                </div>
+                                {% if session['user_email'] %}
+                                    <div class="vote">
+                                        <a title="Vote up the answer"
+                                           href={{ url_for('vote_up_answer_by_id', answer_id=answer[id_answer_index]) }}><b>&#x1F44D</b></a>
+                                        <b class="question_list_b">{{ answer[2]|safe }}</b>
+                                        <a title="Vote down the answer" style="margin-right: 30px"
+                                           href={{ url_for('vote_down_answer_by_id', answer_id=answer[id_answer_index]) }}><b>&#x1F44E</b></a>
+                                        <a title="Add comment to answer"
+                                           href={{ url_for('display_comment_page_answers', answer_id=answer[id_answer_index]) }}><b>&#x1F4AC</b></a>
+                                        <a title="Edit the answer"
+                                           href={{ url_for('display_edit_an_answer', answer_id=answer[id_answer_index]) }}><b>&#x270D</b></a>
+                                        <a title="Delete the answer"
+                                           onclick="return confirm('Do you want to delete that answer')"
+                                           href="{{ url_for('remove_answer', answer_id=answer[0]) }}"><b>&#x274C</b></a>
+                                    </div>
+                                {% endif %}
+                                <div class="id_view_submission">
+                                    ID: <b class="question_list_b">{{ answer[0]|safe }}</b>
+                                    Submission: <b class="question_list_b">{{ answer[1]|safe }}</b>
+                                </div>
+                                {% for comment in comments %}
+                                    {% if comment[2] == answer[0] %}
+                                        <div class="separator"></div>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if answer[0] in list_comments %}
+                                    <div class="answer_comment_block">
+                                        {% for comment in comments %}
+                                            {% if comment[2] == answer[0] %}
+                                                <div class="answer_comment_info">
+                                                    <b>{{ comment[3]|safe }}</b>
+                                                    <hr>
+                                                    {% if session['user_email'] %}
+                                                        <a title="Edit the comment"
+                                                           href="{{ url_for('display_edit_comment', comment_id=comment[0]) }}">&#x270D</a>
+                                                        <a title="Delete the comment"
+                                                           onclick="return confirm('Do you want to delete that comment')"
+                                                           href="{{ url_for('delete_a_comment', comment_id=comment[0]) }}">&#x274C</a>
+                                                        <br>
+                                                    {% endif %}
+                                                    ID: <b>{{ comment[0]|safe }}</b>
+                                                    Submission: <b>{{ comment[4]|safe }}</b>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                </p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <hr>
+            <div class="question_comment_block">
+                <h1>Comments</h1>
+                {#                <hr>#}
+                {% if  is_flag_comment == False %}
+                    <div class="no_content">
+                        <b>There are no comments yet &#128064</b>
+                    </div>
+                {% else %}
+                    {% for comment in comments %}
+                        {% if comment[1] == question_id %}
+                            <div class="single_question_comment">
+                                <p>
+                                <div class="question_comment_info">
+                                    <h4><b>{{ comment[3]|safe }}</b></h4>
+                                    <hr>
+                                    {% if session['user_email'] %}
+                                        <a title="Edit the comment"
+                                           href="{{ url_for('display_edit_comment', comment_id=comment[0]) }}">&#x270D</a>
+                                        <a title="Delete the comment"
+                                           onclick="return confirm('Do you want to delete that comment')"
+                                           href="{{ url_for('delete_a_comment', comment_id=comment[0]) }}">&#x274C</a>
+                                        <br>
+                                    {% endif %}
+                                    ID: <b>{{ comment[0]|safe }}</b>
+                                    Submission: <b>{{ comment[4]|safe }}</b>
+                                    {% if comment[5] == None %}
+                                        Edited count: <b>0</b>
+                                    {% else %}
+                                        Edited count: <b>{{ comment[5] }}</b>
+                                    {% endif %}
+                                </div>
+                                </p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <hr>
+            <div class="tags_block">
+                <h1>Tags</h1>
+                {#                <hr>#}
+                {% if  is_flag_tag == False %}
+                    <div class="no_content">
+                        <b>There are no tags yet &#128064</b>
+                    </div>
+                {% else %}
+                    <div class="single_tag">
+                        {% for question in questions %}
+                            {% if question[id_question_index] == question_id %}
+                                {% for id in question_tags %}
+                                    {% if id[0] == question_id %}
+                                        {% for tag in tags %}
+                                            {% if id[1] == tag[0] %}
+                                                <div class="tag_info" style="font-size: 20px">
+                                                    <b>{{ tag[1] }}</b>
+                                                    {% if session['user_email'] %}
+                                                        <a title="Delete the tag"
+                                                           href={{ url_for('delete_tag', question_id=question[id_question_index], tag_id=tag[0]) }}>&#x274C</a>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="fa fa-facebook"></a>
+                <a href="https://www.youtube.com/watch?v=gkTb9GP9lVI" class="fa fa-twitter"></a>
+                <a href="https://www.youtube.com/watch?v=ZZ5LpwO-An4" class="fa fa-instagram"></a>
+                <a href="https://www.youtube.com/watch?v=aehNWGscU3Y" class="fa fa-google"></a>
+                <a href="https://www.youtube.com/watch?v=Kye64ajAkoU" class="fa fa-linkedin"></a>
+                <a href="https://www.youtube.com/watch?v=5lhGF2TvX_c" class="fa fa-youtube"></a>
+            </p>
+            <p>
+                Site made by Michał Niski and Łukasz Paprot &copy; All rights reserved. <br>Search for secrets buddy.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
